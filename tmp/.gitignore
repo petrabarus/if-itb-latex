@@ -1,0 +1,16 @@
+*.aux
+*.toc
+*.tex~
+*.log
+*.lof
+*.idx
+*.bbl
+*.blg
+*.lot
+*.ilg
+*.lol
+*.out
+*.ind
+*.backup
+thesis.pdf
+.directory

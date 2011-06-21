@@ -74,4 +74,4 @@ Kritik dan saran tersebut dapat dikirim melalui URL
 Terima Kasih
 -----------
 
-* Stephen Long atas pemberian templat LaTeX yang asli.
+* Steven Lolong atas pemberian templat LaTeX yang asli.

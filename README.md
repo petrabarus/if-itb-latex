@@ -1,121 +1,77 @@
-GitHub Markup
-=============
+Templat LaTeX Tesis Informatika ITB
+===================================
+oleh: Petra Novandi <me@petrabarus.net>
 
-We use this library on GitHub when rendering your README or any other
-rich text file.
+Dokumen ini merupakan templat LaTeX yang ditujukan untuk laporan
+tesis di program studi Teknik Informatika ITB. Templat ini penulis
+gunakan dalam penulisan laporan tesis penulis dan dengan semangat
+berbagi penulis memutuskan untuk mempublikasikan templat ini agar
+dapat digunakan oleh banyak orang.
 
-Markups
--------
+Silakan mengunduh, menggunakan, memodifikasi, dan menyebarkan
+templat ini. :)
 
-The following markups are supported.  The dependencies listed are required if
-you wish to run the library.
-
-* [.markdown](http://daringfireball.net/projects/markdown/) -- `gem install redcarpet`
-* [.textile](http://www.textism.com/tools/textile/) -- `gem install RedCloth`
-* [.rdoc](http://rdoc.sourceforge.net/)
-* [.org](http://orgmode.org/) -- `gem install org-ruby`
-* [.creole](http://wikicreole.org/) -- `gem install creole`
-* [.mediawiki](http://www.mediawiki.org/wiki/Help:Formatting) -- `gem install wikicloth`
-* [.rst](http://docutils.sourceforge.net/rst.html) -- `easy_install docutils`
-* [.asciidoc](http://www.methods.co.nz/asciidoc/) -- `brew install asciidoc`
-* [.pod](http://search.cpan.org/dist/perl/pod/perlpod.pod) -- `Pod::Simple::HTML`
-  comes with Perl >= 5.10. Lower versions should install Pod::Simple from CPAN.
-* .1 - Requires [`groff`](http://www.gnu.org/software/groff/)
+Struktur Dokumen
+----------------
 
 
-Contributing
-------------
+Kebutuhan
+---------
 
-Want to contribute? Great! There are two ways to add markups.
+Ada beberapa program yang dapat digunakan dalam melakukan kompilasi
+templat ke dalam dokumen berformat PDF. Penulis menggunakan tiga buah
+program berikut:
 
+* MikTex
 
-### Commands
+  Program ini ditujukan untuk sistem operasi Windows XP/Vista/7.
+  Aplikasi dapat diperoleh di <http://www.miktex.org>.
 
-If your markup is in a language other than Ruby, drop a translator
-script in `lib/github/commands` which accepts input on STDIN and
-returns HTML on STDOUT. See [rest2html][r2h] for an example.
+* MacTex
 
-Once your script is in place, edit `lib/github/markups.rb` and tell
-GitHub Markup about it. Again we look to [rest2html][r2hc] for
-guidance:
+  Program ini untuk sistem operasi Mac OS X. Aplikasi dapat diperoleh
+  di <http://www.tug.org/mactex>.
 
-    command(:rest2html, /re?st(.txt)?/)
+* TeXLive
 
-Here we're telling GitHub Markup of the existence of a `rest2html`
-command which should be used for any file ending in `rest`,
-`rst`, `rest.txt` or `rst.txt`. Any regular expression will do.
+  Program ini untuk sistem operasi Linux. Aplikasi dapat diperoleh di
+  <http://www.tug.org/texlive>
 
-Finally add your tests. Create a `README.extension` in `test/markups`
-along with a `README.extension.html`. As you may imagine, the
-`README.extension` should be your known input and the
-`README.extension.html` should be the desired output.
+Untuk melakukan kompilasi dalam sistem operasi Windows, perlu tambahan
+program yakni Cygwin <http://www.cygwin.org> atau MSYS
+<http://www.mingw.org/wiki/MSYS>.
 
-Now run the tests: `rake`
+Penggunaan
+----------
 
-If nothing complains, congratulations!
+Templat ini telah dilengkapi oleh skrip untuk melakukan kompilasi
+Makefile. Untuk melakukan kompilasi cukup eksekusi perintah berikut
 
+        make miktex
 
-### Classes
+untuk MikTeX,
 
-If your markup can be translated using a Ruby library, that's
-great. Check out Check `lib/github/markups.rb` for some
-examples. Let's look at Markdown:
+        make mactex
 
-    markup(:markdown, /md|mkdn?|markdown/) do |content|
-      Markdown.new(content).to_html
-    end
+untuk MacTeX, dan
 
-We give the `markup` method three bits of information: the name of the
-file to `require`, a regular expression for extensions to match, and a
-block to run with unformatted markup which should return HTML.
+        make texlive
 
-If you need to monkeypatch a RubyGem or something, check out the
-included RDoc example.
+untuk TeXLive.
 
-Tests should be added in the same manner as described under the
-`Commands` section.
+Hasil kompilasi akan berada pada berkas tesis.pdf.
 
+Kontribusi
+----------
 
-Installation
+Templat ini dapat digunakan secara gratis, akan tetapi penulis sangat
+berharap adanya kritik serta saran dari pengguna untuk meningkatkan
+kualitas hasil dan penggunaan templat ini.
+
+Kritik dan saran tersebut dapat dikirim melalui URL
+<https://github.com/petrabarus/if-itb-latex/issues>.
+
+Terima Kasih
 -----------
 
-    gem install github-markup
-
-
-Usage
------
-
-    require 'github/markup'
-    GitHub::Markup.render('README.markdown', "* One\n* Two")
-
-Or, more realistically:
-
-    require 'github/markup'
-    GitHub::Markup.render(file, File.read(file))
-
-
-Testing
--------
-
-To run the tests:
-
-    $ rake
-
-To add tests see the `Commands` section earlier in this
-README.
-
-
-Contributing
-------------
-
-1. Fork it.
-2. Create a branch (`git checkout -b my_markup`)
-3. Commit your changes (`git commit -am "Added Snarkdown"`)
-4. Push to the branch (`git push origin my_markup`)
-5. Create an [Issue][1] with a link to your branch
-6. Enjoy a refreshing Diet Coke and wait
-
-
-[r2h]: http://github.com/github/markup/tree/master/lib/github/commands/rest2html
-[r2hc]: http://github.com/github/markup/tree/master/lib/github/markups.rb#L13
-[1]: http://github.com/github/markup/issues
+* Stephen Long atas pemberian templat LaTeX yang asli.

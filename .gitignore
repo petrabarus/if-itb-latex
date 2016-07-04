@@ -1,0 +1,17 @@
+*.aux
+*.toc
+*.tex~
+*.log
+*.lof
+*.idx
+*.bbl
+*.blg
+*.lot
+*.ilg
+*.lol
+*.out
+*.ind
+*.backup
+*.synctex.gz
+thesis.pdf
+.directory

@@ -9,4 +9,6 @@ mactex:
 	
 	
 miktex:
-	
+
+texlive:
+	latex thesis.tex	

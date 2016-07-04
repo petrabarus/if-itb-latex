@@ -2,16 +2,63 @@
 %
 % Berkas utama templat LaTeX.
 %
-% @author Petra Barus
+% @author Petra Barus, Peb Ruswono Aryan
 %
 %--------------------------------------------------------------------%
 %
 % Berkas ini berisi struktur utama dokumen LaTeX yang akan dibuat.
 %
 %--------------------------------------------------------------------%
-
 \documentclass[bahasa, 12pt, a4paper, onecolumn, oneside, final]{report}
 
+\usepackage{graphicx}
+\usepackage{titling}
+\usepackage{blindtext}
+
+\def\@kampus{Institut Teknologi Bandung}
+
+\newcommand{\judul}{   % custom maketitle 
+\begin{center}
+
+\Large \bfseries \thetitle
+
+\vspace*{\fill}
+\small
+oleh\\
+\theauthor
+\vspace*{\fill}
+\begin{figure}[h]
+\centering
+  	\includegraphics[scale=0.15]{figures/cover-ganesha}
+\end{figure}
+
+\vspace*{\fill}
+\Large
+\@kampus \\
+\the\year
+
+\end{center}	
+}
+
 \begin{document}
+
+\title{Panduan Tugas Akhir Informatika}
+\date{}
+\author{Peb Ruswono Aryan\\
+%NIM
+13502044}
+
+\input{includes/cover}
+\input{includes/approval}
+\pagestyle{plain}
+\input{includes/abstract-id}
+\input{includes/abstract-en}
+\input{includes/forewords}
+
+\input{includes/chapter-1}
+\input{includes/chapter-2}
+\input{includes/chapter-3}
+\input{includes/chapter-4}
+\input{includes/chapter-5}
 
 \end{document}

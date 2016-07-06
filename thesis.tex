@@ -2,43 +2,55 @@
 %
 % Berkas utama templat LaTeX.
 %
-% @author Petra Barus, Peb Ruswono Aryan
+% author Petra Barus, Peb Ruswono Aryan
 %
 %--------------------------------------------------------------------%
 %
 % Berkas ini berisi struktur utama dokumen LaTeX yang akan dibuat.
 %
 %--------------------------------------------------------------------%
-\documentclass[bahasa, 12pt, a4paper, onecolumn, oneside, final]{report}
+\documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
+
+\usepackage[bahasa]{babel}
+\usepackage[utf8x]{inputenc}
 
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{blindtext}
+\usepackage{sectsty}
+\usepackage{chngcntr}
 
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+\makeatletter
 \def\@kampus{Institut Teknologi Bandung}
-
+%\def\@maketitle{   % custom maketitle 
 \newcommand{\judul}{   % custom maketitle 
+
 \begin{center}
 
 \Large \bfseries \thetitle
-
-\vspace*{\fill}
+\vfill
 \small
 oleh\\
 \theauthor
-\vspace*{\fill}
+\vfill
 \begin{figure}[h]
 \centering
   	\includegraphics[scale=0.15]{figures/cover-ganesha}
 \end{figure}
-
-\vspace*{\fill}
+\vfill
 \Large
 \@kampus \\
 \the\year
 
 \end{center}	
 }
+\makeatother
+
+\chapterfont{\centering}
+
 
 \begin{document}
 
@@ -48,17 +60,43 @@ oleh\\
 %NIM
 13502044}
 
+\pagenumbering{roman}
+\setcounter{page}{0}
 \input{includes/cover}
 \input{includes/approval}
+
 \pagestyle{plain}
+
 \input{includes/abstract-id}
 \input{includes/abstract-en}
 \input{includes/forewords}
 
-\input{includes/chapter-1}
-\input{includes/chapter-2}
-\input{includes/chapter-3}
-\input{includes/chapter-4}
-\input{includes/chapter-5}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\pagenumbering{arabic}
+\setcounter{page}{0}
+
+\include{includes/chapter-1}
+
+\include{includes/chapter-2}
+
+\include{includes/chapter-3}
+
+\include{includes/chapter-4}
+
+\include{includes/chapter-5}
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\appendix
+\addcontentsline{toc}{part}{Lampiran}
+\part*{Lampiran}
+
+\include{includes/appendix-1}
+\include{includes/appendix-2}
+
 
 \end{document}

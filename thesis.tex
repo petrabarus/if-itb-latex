@@ -12,10 +12,23 @@
 \documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
 \special{papersize=210mm,297mm}
 
-\usepackage{showframe}
+% set margin
+% \usepackage{showframe}
 \usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry}
+
+% set font
+\usepackage{mathptmx}
+
+% judul bahasa Indonesia
 \usepackage[bahasa]{babel}
-\usepackage[utf8x]{inputenc}
+
+% satu setengah spasi
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[utf8]{inputenc}
+
+% citation style
+\usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
 
 \usepackage{graphicx}
 \usepackage{titling}
@@ -32,8 +45,8 @@
 \newcommand{\judul}{   % custom maketitle 
 
 \begin{center}
-
-\Large \bfseries \thetitle
+\smallskip
+\LARGE \bfseries \thetitle
 \vfill
 \small
 oleh\\
@@ -46,14 +59,18 @@ oleh\\
 \vfill
 \Large
 \@kampus \\
+\large
 \the\year
 
 \end{center}	
 }
 \makeatother
 
-\chapterfont{\centering}
+\chapterfont{\centering \Large}
+\sectionfont{\large}
 
+
+\bibliography{references}
 
 \begin{document}
 
@@ -91,8 +108,7 @@ oleh\\
 
 \include{includes/chapter-5}
 
-\bibliographystyle{alpha}
-\bibliography{references}
+\printbibliography
 
 \appendix
 \addcontentsline{toc}{part}{Lampiran}

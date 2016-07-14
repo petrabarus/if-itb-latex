@@ -3,15 +3,14 @@ dist: trusty
 
 before_install:
     - sudo apt-get update
-    - wget launchpadlibrarian.net/128239195/latexmk_4.35-0ubuntu1_all.deb
+    - mkdir $HOME/texmf
 
 install:
     - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
     - sudo apt-get install -y texlive-bibtex-extra biber xzdec
-    - sudo dpkg -i latexmk_4.35-0ubuntu1_all.deb
+    - sudo apt-get install -y latexmk
     - tlmgr update --self --all
     - tlmgr init-usertree
-    - mkdir $HOME/texmf
     - sudo tlmgr install babel-bahasa
 
 script:

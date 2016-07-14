@@ -41,8 +41,8 @@
 
 \makeatletter
 \def\@kampus{Institut Teknologi Bandung}
-%\def\@maketitle{   % custom maketitle 
-\newcommand{\judul}{   % custom maketitle 
+%\def\@maketitle{   % custom maketitle
+\newcommand{\judul}{   % custom maketitle
 
 \begin{center}
 \smallskip
@@ -54,7 +54,7 @@ oleh\\
 \vfill
 \begin{figure}[h]
 \centering
-  	\includegraphics[scale=0.15]{figures/cover-ganesha}
+  	\includegraphics[width=0.15\textwidth,natwidth=700,natheight=1021]{resources/cover-ganesha.jpg}
 \end{figure}
 \vfill
 \Large
@@ -62,7 +62,7 @@ oleh\\
 \large
 \the\year
 
-\end{center}	
+\end{center}
 }
 \makeatother
 
@@ -82,14 +82,14 @@ oleh\\
 
 \pagenumbering{roman}
 \setcounter{page}{0}
-\input{includes/cover}
-\input{includes/approval}
+\input{chapters/cover}
+\input{chapters/approval}
 
 \pagestyle{plain}
 
-\input{includes/abstract-id}
-\input{includes/abstract-en}
-\input{includes/forewords}
+\input{chapters/abstract-id}
+\input{chapters/abstract-en}
+\input{chapters/forewords}
 
 \tableofcontents
 \listoffigures
@@ -98,15 +98,15 @@ oleh\\
 \pagenumbering{arabic}
 \setcounter{page}{0}
 
-\include{includes/chapter-1}
+\input{chapters/chapter-1}
 
-\include{includes/chapter-2}
+\input{chapters/chapter-2}
 
-\include{includes/chapter-3}
+\input{chapters/chapter-3}
 
-\include{includes/chapter-4}
+\input{chapters/chapter-4}
 
-\include{includes/chapter-5}
+\input{chapters/chapter-5}
 
 \printbibliography
 
@@ -114,8 +114,8 @@ oleh\\
 \addcontentsline{toc}{part}{Lampiran}
 \part*{Lampiran}
 
-\include{includes/appendix-1}
-\include{includes/appendix-2}
+\input{chapters/appendix-1}
+\input{chapters/appendix-2}
 
 
 \end{document}

@@ -13,5 +13,7 @@
 *.ind
 *.backup
 *.synctex.gz
+texmf
 thesis.pdf
 .directory
+output

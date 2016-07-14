@@ -12,5 +12,6 @@
 *.out
 *.ind
 *.backup
+*.synctex.gz
 thesis.pdf
 .directory

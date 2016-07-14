@@ -7,14 +7,10 @@ before_install:
 
 install:
     - sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
-    - sudo apt-get install -y texlive-bibtex-extra biber xzdec
+    - sudo apt-get install -y texlive-bibtex-extra biber xzdec texlive-lang-other
     - sudo apt-get install -y latexmk
     - tex --version
     - pdflatex --version
-    - tlmgr option repository ftp://tug.org/historic/systems/texlive/2015/tlnet-final 
-    - tlmgr init-usertree
-    - tlmgr update --self --all
-    - sudo tlmgr install babel-bahasa
 
 script:
     - mkdir output

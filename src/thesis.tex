@@ -9,27 +9,21 @@
 % Berkas ini berisi struktur utama dokumen LaTeX yang akan dibuat.
 %
 %--------------------------------------------------------------------%
+
 \documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
 \special{papersize=210mm,297mm}
 
-% set margin
-% \usepackage{showframe}
-\usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry}
+\usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry} % set margin
 
-% set font
-\usepackage{mathptmx}
+\usepackage{mathptmx}                 % set font
 
-% judul bahasa Indonesia
-\usepackage[bahasa]{babel}
-
-% satu setengah spasi
-\renewcommand{\baselinestretch}{1.5}
+\usepackage[bahasa]{babel}            % judul bahasa Indonesia
+\renewcommand{\baselinestretch}{1.5}  % satu setengah spasi
 
 \usepackage[utf8]{inputenc}
 
 % citation style
 \usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
-
 \usepackage{graphicx}
 \usepackage{titling}
 \usepackage{blindtext}
@@ -42,80 +36,57 @@
 \makeatletter
 \def\@kampus{Institut Teknologi Bandung}
 %\def\@maketitle{   % custom maketitle
-\newcommand{\judul}{   % custom maketitle
 
-\begin{center}
-\smallskip
-\LARGE \bfseries \thetitle
-\vfill
-\small
-oleh\\
-\theauthor
-\vfill
-\begin{figure}[h]
-\centering
-  	\includegraphics[width=0.15\textwidth,natwidth=700,natheight=1021]{resources/cover-ganesha.jpg}
-\end{figure}
-\vfill
-\Large
-\@kampus \\
-\large
-\the\year
-
-\end{center}
-}
 \makeatother
 
 \chapterfont{\centering \Large}
 \sectionfont{\large}
 
-
 \bibliography{references}
 
 \begin{document}
 
-\title{Panduan Tugas Akhir Informatika}
-\date{}
-\author{Peb Ruswono Aryan\\
-%NIM
-13502044}
+    %Basic configuration
+    \title{Panduan Tugas Akhir Informatika}
+    \date{}
+    \author{
+        Peb Ruswono Aryan \\
+        NIM 13502044
+    }
 
-\pagenumbering{roman}
-\setcounter{page}{0}
-\input{chapters/cover}
-\input{chapters/approval}
+    \pagenumbering{roman}
+    \setcounter{page}{0}
 
-\pagestyle{plain}
+    \input{chapters/cover}
+    \input{chapters/approval}
 
-\input{chapters/abstract-id}
-\input{chapters/abstract-en}
-\input{chapters/forewords}
+    \pagestyle{plain}
 
-\tableofcontents
-\listoffigures
-\listoftables
+    \input{chapters/abstract-id}
+    \input{chapters/abstract-en}
+    \input{chapters/forewords}
 
-\pagenumbering{arabic}
-\setcounter{page}{0}
+    \tableofcontents
+    \listoffigures
+    \listoftables
 
-\input{chapters/chapter-1}
+    \pagenumbering{arabic}
+    \setcounter{page}{0}
 
-\input{chapters/chapter-2}
+    \input{chapters/chapter-1}
+    \input{chapters/chapter-2}
+    \input{chapters/chapter-3}
+    \input{chapters/chapter-4}
+    \input{chapters/chapter-5}
 
-\input{chapters/chapter-3}
+    \printbibliography
 
-\input{chapters/chapter-4}
+    \appendix
 
-\input{chapters/chapter-5}
+    \addcontentsline{toc}{part}{Lampiran}
+    \part*{Lampiran}
 
-\printbibliography
-
-\appendix
-\addcontentsline{toc}{part}{Lampiran}
-\part*{Lampiran}
-
-\input{chapters/appendix-1}
-\input{chapters/appendix-2}
-
+    \input{chapters/appendix-1}
+    \input{chapters/appendix-2}
 
 \end{document}

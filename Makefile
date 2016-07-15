@@ -1,9 +1,10 @@
-install: clean
-	latexmk -pdf -bibtex -outdir=../output -cd src/thesis.tex
+all: clean install
 
+install:
+	mkdir -p output
+	latexmk -pdf -bibtex -outdir=../build -cd src/thesis.tex
+	mv build/thesis.pdf output
 
 clean:
-	rm -f output/*.ps output/*.pdf
-	rm -f tmp/*.aux tmp/*.dvi tmp/*.log tmp/*.toc tmp/*.bbl tmp/*.blg tmp/*.bib
-	rm -rf tmp/*
+	rm -f output/* build/*
 	find . -iname "*~" -exec rm '{}' ';'

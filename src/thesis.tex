@@ -59,6 +59,7 @@
 
     \input{chapters/cover}
     \input{chapters/approval}
+    \input{chapters/statement}
 
     \pagestyle{plain}
 
@@ -71,13 +72,24 @@
     \listoftables
 
     \pagenumbering{arabic}
+    %----------------------------------------------------------------%
+    % Konfigurasi Bab
+    %----------------------------------------------------------------%
     \setcounter{page}{0}
+    \renewcommand{\chaptername}{Bab}
+    \renewcommand{\thechapter}{\Roman{chapter}}
+    %----------------------------------------------------------------%
 
+    %----------------------------------------------------------------%
+    % Dafter Bab
+    % Untuk menambahkan daftar bab, buat berkas bab misalnya `chapter-6` di direktori `chapters`, dan masukkan ke sini.
+    %----------------------------------------------------------------%
     \input{chapters/chapter-1}
     \input{chapters/chapter-2}
     \input{chapters/chapter-3}
     \input{chapters/chapter-4}
     \input{chapters/chapter-5}
+    %----------------------------------------------------------------%
 
     \printbibliography
 

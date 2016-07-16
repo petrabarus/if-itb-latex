@@ -29,17 +29,21 @@
 \usepackage{blindtext}
 \usepackage{sectsty}
 \usepackage{chngcntr}
+\usepackage{titlesec}
 
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
 
 \makeatletter
-\def\@kampus{Institut Teknologi Bandung}
-%\def\@maketitle{   % custom maketitle
 
 \makeatother
 
 \chapterfont{\centering \Large}
+\titleformat{\chapter}[display]
+  {\Large\centering\bfseries}
+  {\chaptertitlename\ \thechapter}{0pt}
+    {\Large\bfseries\uppercase}
+
 \sectionfont{\large}
 
 \bibliography{references}
@@ -76,7 +80,7 @@
     % Konfigurasi Bab
     %----------------------------------------------------------------%
     \setcounter{page}{0}
-    \renewcommand{\chaptername}{Bab}
+    \renewcommand{\chaptername}{BAB}
     \renewcommand{\thechapter}{\Roman{chapter}}
     %----------------------------------------------------------------%
 

@@ -10,3 +10,48 @@
 %
 %-------------------------------------------------------------------%
 
+% Ukuran kertas
+\special{papersize=210mm,297mm}
+
+% Setting margin
+\usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry}
+
+\usepackage{mathptmx}
+
+% Judul bahasa Indonesia
+\usepackage[bahasa]{babel}
+
+% Format citation
+\usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{titling}
+\usepackage{blindtext}
+\usepackage{sectsty}
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+\usepackage{hyperref}       % Package untuk link di daftar isi.
+\usepackage{titlesec}       % Package Format judul
+\usepackage{parskip}
+
+% Line satu setengah spasi
+\renewcommand{\baselinestretch}{1.5}
+
+% Setting judul
+\chapterfont{\centering \Large}
+\titleformat{\chapter}[display]
+  {\Large\centering\bfseries}
+  {\chaptertitlename\ \thechapter}{0pt}
+    {\Large\bfseries\uppercase}
+
+% Setting nomor pada subbsubsubbab
+\setcounter{secnumdepth}{3}
+
+\makeatletter
+
+\makeatother
+
+% Counter untuk figure dan table.
+\counterwithin{figure}{section}
+\counterwithin{table}{section}

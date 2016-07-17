@@ -12,5 +12,4 @@ install:
     - pdflatex --version
 
 script:
-    - mkdir output
     - make install

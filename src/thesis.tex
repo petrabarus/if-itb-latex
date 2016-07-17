@@ -11,40 +11,12 @@
 %--------------------------------------------------------------------%
 
 \documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
-\special{papersize=210mm,297mm}
 
-\usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry} % set margin
-
-\usepackage{mathptmx}                 % set font
-
-\usepackage[bahasa]{babel}            % judul bahasa Indonesia
-\renewcommand{\baselinestretch}{1.5}  % satu setengah spasi
-
-\usepackage[utf8]{inputenc}
-
-% citation style
-\usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
-\usepackage{graphicx}
-\usepackage{titling}
-\usepackage{blindtext}
-\usepackage{sectsty}
-\usepackage{chngcntr}
-\usepackage{titlesec}
-
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
+\input{config/if-itb-thesis.sty}
 
 \makeatletter
 
 \makeatother
-
-\chapterfont{\centering \Large}
-\titleformat{\chapter}[display]
-  {\Large\centering\bfseries}
-  {\chaptertitlename\ \thechapter}{0pt}
-    {\Large\bfseries\uppercase}
-
-\sectionfont{\large}
 
 \bibliography{references}
 
@@ -71,11 +43,15 @@
     \input{chapters/abstract-en}
     \input{chapters/forewords}
 
+    \titleformat*{\section}{\centering\bfseries\Large\MakeUpperCase}
+
     \tableofcontents
     \listoffigures
     \listoftables
 
+    \titleformat*{\section}{\bfseries\Large}
     \pagenumbering{arabic}
+
     %----------------------------------------------------------------%
     % Konfigurasi Bab
     %----------------------------------------------------------------%
@@ -95,8 +71,10 @@
     \input{chapters/chapter-5}
     %----------------------------------------------------------------%
 
+    % Daftar pustaka
     \printbibliography
 
+    % Index
     \appendix
 
     \addcontentsline{toc}{part}{Lampiran}

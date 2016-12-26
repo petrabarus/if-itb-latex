@@ -1,5 +1,8 @@
 all: clean install
 
+watch:
+	find src | entr 'make'
+
 install:
 	mkdir -p output
 	mkdir -p build

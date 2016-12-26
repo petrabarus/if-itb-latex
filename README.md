@@ -15,15 +15,24 @@ templat ini. :)
 Kebutuhan
 ---------
 
-Program telah diuji dalam sistem operasi Linux Ubuntu 14.04. Untuk melakukan instalasi
-perangkat lunak yang dibutuhkan, eksekusi perintah berikut.
+Program telah diuji dalam sistem operasi Linux Ubuntu 14.04, Arch Linux dan Windows 8/10. Untuk melakukan instalasi
+perangkat lunak yang dibutuhkan, eksekusi perintah berikut pada Ubuntu
 
 ```
 sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends \
     texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra \
     dvipng texlive-latex-recommended \
-    texlive-bibtex-extra biber xzdec
+    texlive-bibtex-extra biber xzdec \
+    entr
 ```
+
+atau berikut pada Arch
+
+```
+yaourt -Syy --noconfirm texlive-most texlive-lang entr
+```
+
+atau pada Windows, dapat menginstall [MikTex](https://miktex.org/download) beserta package manager yang akan secara otomatis memasang dependency ketika dibutuhkan.
 
 Penggunaan
 ----------
@@ -33,6 +42,12 @@ Makefile. Untuk melakukan kompilasi cukup eksekusi perintah berikut
 
 ```
 make
+```
+
+Selain itu templat ini juga menyediakan perintah yang secara otomatis mendeteksi perubahan dokumen dan melakukan kompilasi ulang dengan mengeksekusi
+
+```
+make watch
 ```
 
 Hasil kompilasi akan berada pada berkas `output/tesis.pdf`.

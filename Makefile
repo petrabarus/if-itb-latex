@@ -8,4 +8,3 @@ install:
 
 clean:
 	rm -f output/* build/*
-	find . -iname "*~" -exec rm '{}' ';'

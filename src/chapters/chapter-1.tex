@@ -1,12 +1,15 @@
 \chapter{Pendahuluan}
 
-Bab Pendahuluan secara umum yang dijadikan landasan kerja dan arah kerja penulis tugas akhir, berfungsi mengantar pembaca untuk membaca laporan tugas akhir secara keseluruhan.
+Pada bab ini akan dibahas mengenai gambaran dasar dari pelaksanaan tugas akhir dalam bentuk penjelasan latar belakang yang mendasari pemilihan topik. Dari latar belakang tersebut, akan diurai kembali menjadi rumusan masalah, tujuan, batasan masalah, serta metodologi yang digunakan untuk keperluan Tugas Akhir ini.
 
 \section{Latar Belakang}
 
-Latar Belakang berisi dasar pemikiran, kebutuhan atau alasan yang menjadi ide dari topik tugas akhir. Tujuan utamanya adalah untuk memberikan informasi secukupnya kepada pembaca agar memahami topik yang akan dibahas.  Saat menuliskan bagian ini, posisikan anda sebagai pembaca – apakah anda tertarik untuk terus membaca?
+SNORT merupakan sistem deteksi intrusi yang populer digunakan. SNORT menggunakan PCRE (Perl Compatible Regular Expression) untuk pencocokan pola paket. Pola paket akan diperbarui secara berkala dari komunitas penggiat keamanan. Dengan adanya sistem ini, pencocokan dapat dilakukan lebih cepat dan fleksibel. \\
+Namun dengan makin banyaknya traffic yang lewat, IDS dengan performa yang lebih baik sangat dibutuhkan. Peningkatan performa yang biasa dilakukan dengan cara scale out. Penggunaan multi node maupun multicore processor telah dikembangkan untuk mempercepat performa IDS. \\
+Metode-metode diatas dapat mempercepat pencocokan pola hingga 300\%. Meski demikian, performa masih terhambat latency antar core/node sehingga belum optimal. Dan juga kebanyakan arsitektur fokus melakukan scale out hanya pada satu aspek. Ini juga menyebabkan latency antar komponen juga turut memperlambat sistem. 
 
-\section{Tujuan}
+
+\section{Rumusan Masalah}
 
 Rumusan Masalah berisi masalah utama yang dibahas dalam tugas akhir. Rumusan masalah yang baik memiliki struktur sebagai berikut:
 
@@ -21,16 +24,17 @@ Penting untuk diperhatikan bahwa persoalan yang dideskripsikan pada subbab ini a
 
 \section{Tujuan}
 
-Tuliskan tujuan utama dan/atau tujuan detil yang akan dicapai dalam pelaksanaan tugas akhir. Fokuskan pada hasil akhir yang ingin diperoleh setelah tugas akhir diselesaikan, terkait dengan penyelesaian persoalan pada rumusan masalah. Penting untuk diperhatikan bahwa tujuan yang dideskripsikan pada subbab ini akan dipertanggungjawabkan di akhir pelaksanaan tugas akhir apakah tercapai atau tidak.
+Tugas akhir ini akan mencoba menjawab pertanyaan apa saja yang dapat dilakukan untuk memperkecil latency pada pemroses paralel pada IDS dan berapa besar kenaikan performa yang dapat dicapai.
 
 \section{Batasan Masalah}
 
-Tuliskan batasan-batasan yang diambil dalam pelaksanaan tugas akhir. Batasan ini dapat dihindari (tidak perlu ada) jika topik/judul tugas akhir dibuat cukup spesifik.
+Fokus masalah yang dibahas pada tugas akhir ini yaitu pengembangan arsitektur yang efisien untuk pencocokan pola SNORT IDS menggunakan pemroses grafis (GPU).
 
 \section{Metodologi}
 
-Tuliskan semua tahapan yang akan dilalui selama pelaksanaan tugas akhir. Tahapan ini spesifik untuk menyelesaikan persoalan tugas akhir. Tahapan studi literatur tidak perlu dituliskan karena ini adalah pekerjaan yang harus Anda lakukan selama proses pelaksanaan tugas akhir.
+Tahapan yang akan dilakukan selama pelaksanaan tugas akhir ini adalah sebagai berikut:
 
-\section{Sistematika Pembahasan}
 
-Subbab ini berisi penjelasan ringkas isi per bab. Penjelasan ditulis satu paragraf per bab buku.
+\section{Jadwal Pelaksanaan Tugas Akhir}
+
+Tuliskan rencana kegiatan dan jadwal (dirinci sampai per minggu) mulai dari awal pelaksanaan Tugas Akhir I s.d. sidang tugas akhir berikut milestones dan deliverables yang harus diberikan. Jadwal ini dapat dibantu dengan membuat sebuah tabel timeline.

@@ -18,11 +18,13 @@
 
 \usepackage{mathptmx}
 
-% Judul bahasa Indonesia
-\usepackage[bahasa]{babel}
+\usepackage[american]{babel}
+\usepackage{csquotes}
 
 % Format citation
-\usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
+\usepackage[backend=biber,style=apa,citestyle=authoryear]{biblatex}
+\DeclareLanguageMapping{american}{american-apa}
+\DeclareFieldFormat{apacase}{#1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}

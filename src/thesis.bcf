@@ -2303,16 +2303,19 @@
   <bcf:section number="0">
     <bcf:citekey order="1">perrin2008</bcf:citekey>
     <bcf:citekey order="2">parker1998</bcf:citekey>
-    <bcf:citekey order="3">kizza2013</bcf:citekey>
+    <bcf:citekey order="3">kizza2015</bcf:citekey>
     <bcf:citekey order="4">owasp2013</bcf:citekey>
     <bcf:citekey order="5">snort</bcf:citekey>
     <bcf:citekey order="6">pcre2007</bcf:citekey>
-    <bcf:citekey order="7">multi2005</bcf:citekey>
-    <bcf:citekey order="8">gpu2008</bcf:citekey>
+    <bcf:citekey order="7">multi2004</bcf:citekey>
+    <bcf:citekey order="8">4482891</bcf:citekey>
     <bcf:citekey order="9">fpga2008</bcf:citekey>
     <bcf:citekey order="10">gnort2008</bcf:citekey>
-    <bcf:citekey order="11">parker1998</bcf:citekey>
-    <bcf:citekey order="12">4026885</bcf:citekey>
+    <bcf:citekey order="11">kizza2015</bcf:citekey>
+    <bcf:citekey order="12">kizza2015</bcf:citekey>
+    <bcf:citekey order="13">nist2014</bcf:citekey>
+    <bcf:citekey order="14">ahoc1975</bcf:citekey>
+    <bcf:citekey order="15">trie59</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="apa/global/" type="entry" sortscheme="apa" sortnamekeyscheme="global" labelprefix="">
   <bcf:sorting>

@@ -6,7 +6,7 @@ watch:
 install:
 	mkdir -p output
 	mkdir -p build
-	latexmk -pdf -bibtex- -outdir=../build -cd src/thesis.tex
+	latexmk -pdf -shell-escape -bibtex- -outdir=../build -cd src/thesis.tex
 	mv build/thesis.pdf output
 
 clean:

@@ -13,7 +13,7 @@
 \documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
 
 \usepackage{graphicx}
-\DeclareGraphicsExtensions{.png,.jpg}
+\DeclareGraphicsExtensions{.png,.jpg,.jpeg}
 
 \input{config/if-itb-thesis.sty}
 \input{config/hyphenation.tex}
@@ -50,7 +50,11 @@
     \titleformat*{\section}{\centering\bfseries\Large\MakeUpperCase}
 
     \tableofcontents
+
+    \addcontentsline{toc}{chapter}{\listfigurename}
     \listoffigures
+
+    \addcontentsline{toc}{chapter}{\listtablename}
     \listoftables
 
     \titleformat*{\section}{\bfseries\Large}
@@ -76,7 +80,7 @@
     %----------------------------------------------------------------%
 
     % Daftar pustaka
-    \printbibliography
+    \printbibliography[title=Daftar Pustaka]
 
     % Index
     \appendix

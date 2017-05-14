@@ -14,7 +14,7 @@
 \special{papersize=210mm,297mm}
 
 % Setting margin
-\usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry}
+\usepackage[top=3cm,bottom=3cm,left=4cm,right=3cm]{geometry}
 
 \usepackage{mathptmx}
 
@@ -37,6 +37,7 @@
 \usepackage{sectsty}
 \usepackage{chngcntr}
 \usepackage{etoolbox}
+\usepackage{amsmath}
 \usepackage{hyperref}       % Package untuk link di daftar isi.
 \usepackage{titlesec}       % Package Format judul
 \usepackage{parskip}
@@ -50,6 +51,7 @@
   {\Large\centering\bfseries}
   {\chaptertitlename\ \thechapter}{0pt}
     {\Large\bfseries\uppercase}
+  \titlespacing*{\chapter}{0pt}{-50pt}{40pt}
 
 % Setting nomor pada subbsubsubbab
 \setcounter{secnumdepth}{4}
@@ -62,3 +64,6 @@
 % Counter untuk figure dan table.
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
+
+% Nomor persamaan
+\renewcommand{\theequation}{\arabic{equation}}

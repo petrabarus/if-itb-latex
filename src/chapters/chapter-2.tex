@@ -150,7 +150,7 @@
 
   \subsection{\emph{Compute Unified Device Architecture}}
 
-    \emph{Compute Unified Device Architecture} (CUDA) adalah platform dan API untuk GPGPU oleh Nvidia. CUDA menyediakan antarmuka untuk dapat menggunakan GPU Nvidia untuk melakukan GPGPU \parencite{cuda}. CUDA API dapat diimplementasi menggunakan bahasa C, C++, dan Fortran. Selain itu, ada juga binding yang dibuat dalam pustaka beberapa bahasa oleh pihak ketiga, seperti Python, Perl, Java, Ruby, Haskell, Lua, MATLAB, dan Mathematica. Platform CUDA hanya tersedia untuk GPU merek Nvidia.
+    \emph{Compute Unified Device Architecture} (CUDA) adalah platform dan API untuk GPGPU oleh NVIDIA. CUDA menyediakan antarmuka untuk dapat menggunakan GPU NVIDIA untuk melakukan GPGPU \parencite{cuda}. CUDA API dapat diimplementasi menggunakan bahasa C, C++, dan Fortran. Selain itu, ada juga binding yang dibuat dalam pustaka beberapa bahasa oleh pihak ketiga, seperti Python, Perl, Java, Ruby, Haskell, Lua, MATLAB, dan Mathematica. Platform CUDA hanya tersedia untuk GPU merek NVIDIA.
 
     \subsubsection{Struktur Kode CUDA}
 
@@ -200,11 +200,11 @@
 
   \subsection{Rancangan NIDS berbasis GPGPU}
 
-    Selain rancangan \emph{multithreading} pada CPU, telah dilakukanp penelitian tentang rancangan arsitektur untuk NIDS pada GPGPU \parencite{gnort2008}. Rancangan bertujuan mengakomodasi implementasi algoritma Aho-Corasick pada GPU. Beberapa komponen yang dimodifikasi yaitu implementasi \emph{state machine}, skema transfer antara CPU dan GPU, dan 
+    Selain rancangan \emph{multithreading} pada CPU, telah dilakukanp penelitian tentang rancangan arsitektur untuk NIDS pada GPGPU \parencite{gnort2008}. Rancangan bertujuan mengakomodasi implementasi algoritma Aho-Corasick pada GPU. Beberapa komponen yang dimodifikasi yaitu implementasi \emph{state machine}, skema transfer antara \emph{host} dan \emph{device}, dan 
 
-    Implementasi Snort menggunakan layout memori untuk menyimpan pola signature yang berbentuk array of string. Layout ini kemudian dimodfikasi menjadi array 2D sebelum diimplementasi menggunakan CUDA. Kelebihan layout memori ini adalah mudah untuk ditransfer ke memori tekstur. Selain itu algoritma Aho-Corasick memanfaatkan locality reference dengan baik. Sehingga implementasi memori dapat meningkatkan kinerja pencocokan GPU hingga 19\%.
+    Implementasi Snort menggunakan struktur memori untuk menyimpan pola \emph{signature} yang berbentuk \emph{list of string}. \emph{Layout} ini kemudian dimodfikasi menjadi \emph{array} 2D sebelum diimplementasi menggunakan CUDA. Kelebihan \emph{layout} memori ini adalah mudah untuk ditransfer ke memori tekstur. Selain itu algoritma Aho-Corasick memanfaatkan prinsip \emph{locality} dengan baik. Sehingga implementasi memori dapat meningkatkan kinerja pencocokan NIPS hingga 19\%.
 
-    Transfer data dari CPU ke GPU maupun GPU ke CPU menggunakan skema double buffering. Skema ini menggunakan sebuah buffer untuk menampung paket yang ingin dicek menjadi satu batch besar. Batch besar kemudian ditransfer ke memori GPU. Ketika GPU melakukan pemrosesan, maka paket yang baru datang akan dikumpulkan dalam buffer berbeda. Sehingga kedua buffer dapat selalu bertukar posisi. Hal ini mampu meningkatkan asynch pengiriman rata-rata paket. Selain itu, memori host dapat dikonfigurasi menggunakan \emph{pinned down memory} agar menurunkan tingkat \emph{memory page swapping} dan juga meningkatkan throughput sistem.
+    Transfer data dari \emph{host} ke \emph{device} maupun \emph{device} ke \emph{host} menggunakan skema \emph{double buffering}. Skema ini menggunakan sebuah \emph{buffer} untuk menampung paket yang ingin dicek menjadi satu batch besar. Batch besar kemudian ditransfer ke memori \emph{device}. Ketika GPU melakukan pemrosesan, maka paket yang baru datang akan ditampung dalam \emph{buffer} berbeda. Sehingga kedua \emph{buffer} dapat selalu bertukar posisi. Hal ini mampu meningkatkan utilitas pengiriman rata-rata paket. Selain itu, memori \emph{host} dapat dikonfigurasi menggunakan \emph{pinned memory} agar menurunkan tingkat \emph{memory page swapping} dan juga meningkatkan \emph{throughput} sistem.
     % dan dengan memanfaatkan DMA (\emph{direct memory access}) sehingga membebani CPU 
 
     Ada 2 desain pencocokan paket yang diteliti:
@@ -221,14 +221,14 @@
 
   \subsection{Rancangan NIDS Berbasis \emph{Signature} yang \emph{Scalable}}
 
-    Dalam \parencite{kargus2012}, dijelaskan bahwa pada NIDPS, bottleneck utama terdapat pada 3 komponen, packet acquisition, multi-string pattern matching, dan rule options evaluations. Rule options evaluations hanya dilakukan saat paket terindikasi mengandung serangan oleh tahap multi-string pattern matching. Sebelum PCRE dicocokkan, PCRE akan dipreproses menjadi DFA terlebih dahulu menggunakan algoritma Thompson. Kemudian pencocokan options dapat dilakukan menggunakan metode yang serupa dengan pencocokan multi-string.
+    Dalam \parencite{kargus2012}, dijelaskan bahwa pada NIDPS, \emph{bottleneck} utama terdapat pada 3 komponen, \emph{packet acquisition}, \emph{multi-string pattern matching}, dan pencocokan opsi \emph{rule}. Pencocokan opsi \emph{rule} hanya dilakukan saat paket terindikasi mengandung serangan oleh tahap multi-string pattern matching. Sebelum PCRE dicocokkan, PCRE akan dipreproses menjadi DFA terlebih dahulu menggunakan algoritma Thompson. Kemudian pencocokan opsi dapat dilakukan menggunakan metode yang serupa dengan pencocokan \emph{multi-string}.
 
-    Salah satu optimasi yang diajukan untuk tahap pencocokan yaitu penggunaan pipelining. Pipelining dilakukan dengan menambahkan beberapa thread untuk operasi I/O. Tiap operasi I/O juga digunakan batching sebelum dilakukan transfer antar komponen. Hasil yang didapatkan menggunakan desain ini dapat mencapai sekitar maksimal 35 Gbps dan 25 Gbps untuk skenario normal.
+    Salah satu optimasi yang diajukan untuk tahap pencocokan yaitu penggunaan \emph{pipelining}. \emph{Pipelining} dilakukan dengan menambahkan beberapa thread untuk operasi \emph{I/O}. Kemudian pada tiap operasi \emph{I/O} juga digunakan batch sebelum dilakukan transfer antar komponen. Hasil yang didapatkan menggunakan desain ini dapat mencapai sekitar maksimal 35 Gbps dan 25 Gbps untuk skenario normal.
     % Metode ini dapat digabungkan dengan DMA sehingga kinerja thread yang mengatur transfer paket tidak membebani CPU. 
 
   \subsection{Penyimpanan \emph{Signature} dengan Struktur Trie Terkompresi}
 
-    Sete \parencite{bellekens2014}, terkait struktur penyimpanan signature dengan struktur trie terkompresi. Desain utama trie menggunakan representasi penelusuran \emph{breadth first search} (BFS). Lokasi \emph{pointer} simpul anak akan dihitung menggunakan \emph{sparse matrix}. Selain itu dilakukan kompresi terhadap bentuk trie sehingga memori yang dibutuhkan lebih padat.
+    Pada \parencite{bellekens2014}, ditunjukkan bahwa penyimpanan \emph{signature} dapat dilakukan dengan struktur trie terkompresi. Desain utama trie menggunakan representasi penelusuran \emph{breadth first search} (BFS). Lokasi \emph{pointer} simpul anak akan dihitung menggunakan \emph{sparse matrix}. Selain itu dilakukan kompresi terhadap bentuk trie sehingga memori yang dibutuhkan lebih padat.
 
     Masing-masing simpul dalam trie akan mengandung tiga buah informasi, matriks akan berisi \emph{offset} dari lokasi simpul anak terkecil dan sebuah \emph{bitmap} berisi flag dari semua simpul anak dalam 256 karakter ASCII. Ketika ingin melakukan penelusuran, simpul akan melakukan penghitungan karakter berdasarkan offset pertama simpul ditambah dengan kumulatif dari tiap bit.
 

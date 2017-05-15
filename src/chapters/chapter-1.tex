@@ -10,17 +10,15 @@
 
   Salah satu resource yang penting untuk dilindungi yaitu server. Banyak aspek security yang terdapat pada server dan dapat dengan mudah diserang \parencite{owasp2013}. Solusi untuk pengamanan server dari request berbahaya adalah dengan menggunakan sistem deteksi intrusi jaringan (\emph{network intrusion detection system} abbr. NIDS). NIDS berfungsi mengenali mengenali kemungkinan serangan dari request yang diterima pada server atau client. Ketika request dianggap berbahaya, maka dapat dilakukan tindakan lanjutan untuk mencegah kerusakan lebih lanjut pada aset. NIDS yang melakukan tindakan preventif seperti ini disebut juga NIPS (\emph{network intrusion prevention system}).
 
-  Salah satu contoh NIDS yang banyak digunakan adalah NIDS SNORT. SNORT adalah salah satu NIDS berbasis \emph{signature} yang mencocokan paket dengan pola serangan yang didefinisikan terlebih dahulu \parencite{snort}. SNORT menggunakan PCRE (\emph{Perl Compatible Regular Expression}) \emph{rule} untuk pencocokan \emph{signature} paket. \emph{Signature} paket berasal dari komunitas penggiat keamanan dan akan diperbaharui jika diketahui ada pola serangan baru.
+  Salah satu contoh NIDS yang banyak digunakan adalah NIDS Snort. Snort adalah salah satu NIDS berbasis \emph{signature} yang mencocokan paket dengan pola serangan yang didefinisikan terlebih dahulu \parencite{snort}. Snort menggunakan PCRE (\emph{Perl Compatible Regular Expression}) \emph{rule} untuk pencocokan \emph{signature} paket. \emph{Signature} paket berasal dari komunitas penggiat keamanan dan akan diperbaharui jika diketahui ada pola serangan baru.
 
   Karena adanya peningkatan \emph{bandwidth} secara global dan banyaknya serangan yang terjadi, maka dibutuhkan NIDS yang mampu melakukan deteksi dengan lebih cepat. Salah satu \emph{bottleneck} dalam pengecekan paket adalah banyaknya rule yang harus dicocokkan \parencite{pcre2007}. Sehingga peningkatan secara signifikan dapat dicapai salah satunya dengan meningkatkan kemampuan komputasi untuk pencocokan banyak paket secara paralel. Pemanfaatan multithreading pada multicore processor telah dikembangkan untuk mempercepat kinerja NIDS \parencite{multi2004}.
-
-% TODO: 
 
   Selain mengoptimalkan penggunaan CPU, alternatif yang dapat digunakan yaitu penggunaan general purpose GPU (GPGPU) \parencite{4482891}. Dapat juga menggunakan prosesor yang mudah dikustomisasi seperti ASIC atau FPGA \parencite{fpga2008}. GPGPU banyak digunakan karena selain kustomisasi yang diperlukan lebih sedikit dari ASIC dan FPGA, perbandingan kinerja antara GPGPU dan ASIC atau FPGA tidak terlalu jauh tanpa melakukan kustomisasi lebih lanjut di tingkat \emph{low level} \parencite{gnort2008}. Maka, tugas akhir ini akan fokus untuk melakukan pembangunan NIPS berbasis GPU.
 
 \section{Rumusan Masalah}
 
-  Melakukan pencocokan pola yang banyak secara realtime terkait dengan beberapa masalah, yaitu algoritma yang digunakan, penyimpanan dictionary, dan metode preprocessing paket. Maka dari itu, Tugas Akhir ini akan difokuskan pada pembangunan sistem deteksi intrusi jaringan paralel dengan GPU. Dalam rangka pembangunan sistem tersebut, terdapat beberapa permasalahan yang menjadi fokus perhatian dari penelitian ini, yaitu:
+  Melakukan pencocokan banyak pola secara realtime terkait dengan beberapa masalah, yaitu algoritma yang digunakan, penyimpanan dictionary, dan metode preprocessing paket. Maka dari itu, Tugas Akhir ini akan difokuskan pada pembangunan sistem deteksi intrusi jaringan paralel dengan GPU. Dalam rangka pembangunan sistem tersebut, terdapat beberapa permasalahan yang menjadi fokus perhatian dari penelitian ini, yaitu:
 
   \begin{enumerate}
       \item Menganalisis faktor-faktor yang mampu meningkatkan kinerja pencocokan signature

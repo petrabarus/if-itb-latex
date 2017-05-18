@@ -1,26 +1,26 @@
 \chapter{Pendahuluan}
 
-  Pada bab ini akan dibahas mengenai landasan dari pelaksanaan Tugas Akhir tentang sistem deteksi intrusi jaringan ini.
+  Pada bab ini akan dibahas mengenai landasan dari pelaksanaan Tugas Akhir tentang sistem deteksi intrusi jaringan.
 
 \section{Latar Belakang}
 
-  Penjaminan keamanan informasi merupakan cara-cara untuk mencegah pengaksesan, penggunaan, penyebaran, pengubahan, penyalinan, atau perusakan data yang tidak berhak. Beberapa aspek yang penting untuk dijamin dalam sebuah informasi adalah \emph{confidentiality}, \emph{integrity} dan \emph{availability}. Ketiganya biasa disebut CIA Triad dan telah menjadi pedoman prinsip keamanan informasi selama 20 tahun lebih \parencite{perrin2008}. Pada tahun 2008, Donn Parker mengusulkan aspek tambahan penjaminan informasi yaitu \emph{possession}, \emph{authencity}, dan \emph{utility} \parencite{parker1998}. Parker berpendapat bahwa model CIA hanya fokus pada aset saja dan tidak pada kontrol pengguna.
+  Penjaminan keamanan informasi merupakan cara-cara untuk mencegah pengaksesan, penggunaan, penyebaran, pengubahan, penyalinan, atau perusakan data yang tidak berhak. Beberapa aspek yang penting untuk dijamin dalam sebuah informasi adalah \emph{confidentiality}, \emph{integrity} dan \emph{availability}. Ketiganya biasa disebut CIA Triad dan telah menjadi pedoman prinsip keamanan informasi selama 20 tahun lebih \parencite{perrin2008}. Pada tahun 2008, Donn Parker mengusulkan aspek tambahan penjaminan informasi yaitu \emph{possession}, \emph{authencity}, dan \emph{utility} \parencite{parker1998}. Parker berpendapat bahwa model CIA hanya berfokus pada aset saja tidak pada kontrol pengguna.
 
-  Pengamanan dapat dilakukan pada 2 sisi \emph{resource}, yaitu \emph{tangible resources} dan \emph{intangible resources}. \emph{Tangible resources} yaitu aset yang berupa barang kasar (yang memiliki rupa). Contoh \emph{tangible resources} misal client, server, dan channel komunikasi (komunikasi kabel dan nirkabel). \emph{Intangible resources} yaitu aset yang tidak memiliki rupa, yaitu isi dari informasi yang dikirimkan. Baik keamanan dari \emph{tangible resources} maupun \emph{intangible resources} saling terkait dan memiliki peran penting dalam menjamin aset yang lain \parencite{kizza2015}.
+  Pengamanan dapat dilakukan pada 2 sisi sumber daya, yaitu \emph{tangible resources} dan \emph{intangible resources}. \emph{Tangible resources} yaitu aset yang berupa barang kasar (yang memiliki rupa). Contoh \emph{tangible resources} misal \emph{client}, \emph{server}, dan \emph{channel} komunikasi (komunikasi kabel dan nirkabel). \emph{Intangible resources} yaitu aset yang tidak memiliki rupa, yaitu isi dari informasi yang dikirimkan. Baik keamanan dari \emph{tangible resources} maupun \emph{intangible resources} saling terkait dan memiliki peran penting dalam menjamin aset yang lain \parencite{kizza2015}.
 
-  Salah satu resource yang penting untuk dilindungi yaitu server. Banyak aspek security yang terdapat pada server dan dapat dengan mudah diserang \parencite{owasp2013}. Solusi untuk pengamanan server dari request berbahaya adalah dengan menggunakan sistem deteksi intrusi jaringan (\emph{network intrusion detection system} abbr. NIDS). NIDS berfungsi mengenali mengenali kemungkinan serangan dari request yang diterima pada server atau client. Ketika request dianggap berbahaya, maka dapat dilakukan tindakan lanjutan untuk mencegah kerusakan lebih lanjut pada aset. NIDS yang melakukan tindakan preventif seperti ini disebut juga NIPS (\emph{network intrusion prevention system}).
+  Salah satu sumber daya yang penting untuk dilindungi yaitu \emph{server}. Banyak aspek security yang terdapat pada \emph{server} dan dapat dengan mudah diserang \parencite{owasp2013}. Solusi untuk pengamanan \emph{server} dari \emph{request} berbahaya adalah dengan menggunakan sistem deteksi intrusi jaringan (\emph{network intrusion detection system} abbr. NIDS). NIDS berfungsi mengenali mengenali kemungkinan serangan dari \emph{request} yang diterima pada \emph{server} atau \emph{client}. Ketika \emph{request} dianggap berbahaya, maka dapat dilakukan tindakan lanjutan untuk mencegah kerusakan lebih lanjut pada aset. NIDS yang melakukan tindakan preventif seperti ini disebut juga NIPS (\emph{network intrusion prevention system}).
 
   Salah satu contoh NIDS yang banyak digunakan adalah NIDS Snort. Snort adalah salah satu NIDS berbasis \emph{signature} yang mencocokan paket dengan pola serangan yang didefinisikan terlebih dahulu \parencite{snort}. Snort menggunakan PCRE (\emph{Perl Compatible Regular Expression}) \emph{rule} untuk pencocokan \emph{signature} paket. \emph{Signature} paket berasal dari komunitas penggiat keamanan dan akan diperbaharui jika diketahui ada pola serangan baru.
 
-  Karena adanya peningkatan kecepatan \emph{traffic} internet dan banyaknya serangan yang terjadi, maka dibutuhkan NIDS yang mampu melakukan deteksi dengan lebih cepat. Salah satu \emph{bottleneck} dalam pengecekan paket adalah banyaknya rule yang harus dicocokkan \parencite{pcre2007}. Sehingga peningkatan secara signifikan dapat dicapai salah satunya dengan meningkatkan kemampuan komputasi untuk pencocokan banyak paket secara paralel. Pemanfaatan \emph{multithreading} pada \emph{multicore processor} telah dikembangkan untuk mempercepat kinerja NIDS \parencite{multi2004}.
+  Karena adanya peningkatan kecepatan \emph{traffic} internet dan banyaknya serangan yang terjadi, maka dibutuhkan NIDS yang mampu melakukan deteksi dengan lebih cepat. Salah satu \emph{bottleneck} dalam pengecekan paket adalah banyaknya \emph{rule} yang harus dicocokkan \parencite{pcre2007}. Sehingga peningkatan secara signifikan dapat dicapai salah satunya dengan meningkatkan kemampuan komputasi untuk pencocokan banyak paket secara paralel. Pemanfaatan \emph{multithreading} pada \emph{multicore processor} telah dikembangkan untuk mempercepat kinerja NIDS \parencite{multi2004}.
 
-  Selain mengoptimalkan penggunaan CPU, alternatif yang dapat digunakan yaitu penggunaan \emph{general purpose} GPU (GPGPU) \parencite{4482891}. Dapat juga menggunakan prosesor yang mudah dikustomisasi seperti ASIC atau FPGA \parencite{fpga2008}. GPGPU banyak digunakan karena selain kustomisasi yang diperlukan lebih sedikit dari ASIC dan FPGA, perbandingan kinerja antara GPGPU dan ASIC atau FPGA tidak terlalu jauh tanpa melakukan kustomisasi lebih lanjut di tingkat \emph{low level} \parencite{gnort2008}. Maka, tugas akhir ini akan fokus untuk melakukan pembangunan NIPS berbasis GPU.
+  Selain mengoptimalkan penggunaan CPU, alternatif yang dapat digunakan yaitu penggunaan \emph{general purpose} GPU (GPGPU) \parencite{4482891}. Dapat juga menggunakan prosesor yang mudah dikustomisasi seperti ASIC atau FPGA \parencite{fpga2008}. GPGPU banyak digunakan karena selain kustomisasi yang diperlukan lebih sedikit dari ASIC dan FPGA, perbandingan kinerja antara GPGPU dan ASIC atau FPGA tidak terlalu jauh tanpa melakukan kustomisasi lebih lanjut di tingkat \emph{low level} \parencite{gnort2008}. Maka, Tugas Akhir ini akan fokus untuk melakukan pembangunan NIPS berbasis GPU.
 
 \section{Rumusan Masalah}
 
   Melakukan pencocokan banyak pola secara realtime terkait dengan beberapa masalah, yaitu algoritma yang digunakan, penyimpanan \emph{dictionary}, dan metode \emph{streaming} paket. Maka dari itu, Tugas Akhir ini akan difokuskan pada pembangunan sistem deteksi intrusi jaringan paralel dengan GPU. Dalam rangka pembangunan sistem tersebut, terdapat beberapa permasalahan yang menjadi fokus perhatian dari penelitian ini, yaitu: \\
   \begin{enumerate}
-      \item Menganalisis faktor-faktor yang mampu meningkatkan kinerja pencocokan \emph{signature}
+      \item Menganalisis faktor-faktor apa saja yang mampu meningkatkan kinerja pencocokan \emph{signature}
       \item Mencari rancangan-rancangan yang akan digunakan dan menentukan algoritma terbaik untuk pencocokan \emph{signature}
       \item Mengembangkan sebuah arsitektur yang memadai untuk pencocokan pola dengan GPU
       \item Membangun sistem pencegah intrusi jaringan berbasis GPU
@@ -37,7 +37,7 @@
 
 \section{Batasan Masalah}
 
-  Merancang NIPS yang cepat dengan menggunakan GPU merupakan solusi yang cocok untuk menghadapi serangan yang makin meningkat. Tugas Akhir ini akan difokuskan pada pembangunan sistem yang melakukan inspeksi paket secara cepat menggunakan komputasi paralel pada GPU. Dalam rangka pembangunan sistem tersebut, terdapat beberapa permasalahan yang menjadi fokus perhatian dari penelitian ini, yaitu:
+  Merancang NIPS yang cepat dengan menggunakan GPU merupakan solusi yang cocok untuk menghadapi serangan yang semakin meningkat. Tugas Akhir ini akan difokuskan pada pembangunan sistem yang melakukan inspeksi paket secara cepat menggunakan komputasi paralel pada GPU. Dalam rangka pembangunan sistem tersebut, terdapat beberapa batasan yang digunakan dalam penelitian ini, yaitu:
   \begin{enumerate}
       \item NIPS dibuat memodifikasi NIDS Snort
       \item NIPS menggunakan platform GPGPU CUDA
@@ -47,17 +47,17 @@
 
 \section{Metodologi}
 
-  Tahapan yang akan dilakukan selama pelaksanaan tugas akhir ini adalah sebagai berikut:
+  Tahapan yang akan dilakukan selama pelaksanaan Tugas Akhir ini adalah sebagai berikut:
   \begin{enumerate}
 
       \item Analisis Permasalahan \\
-      Pengerjaan tugas akhir ini diawali dengan analisis terhadap permasalahan yang ingin diteliti lebih lanjut. Pada tahap ini, studi literatur perlu dilakukan dalam rangka mempelajari hasil-hasil penelitian berkaitan yang telah dilakukan, berikut metodologi penelitian serta ketercapaian yang berhasil didapatkan. Selain itu, tahap ini juga menjadi langkah awal untuk merumuskan landasan teori, penarikan hipotesis, hingga akhirnya dicapai rancangan solusi yang akan digunakan untuk membangun sistem deteksi intrusi.
+      Pengerjaan Tugas Akhir ini diawali dengan analisis terhadap permasalahan yang ingin diteliti lebih lanjut. Pada tahap ini, studi literatur perlu dilakukan dalam rangka mempelajari hasil-hasil penelitian terkait yang telah dilakukan, berikut metodologi penelitian serta ketercapaian yang berhasil didapatkan. Selain itu, tahap ini juga menjadi langkah awal untuk merumuskan landasan teori, penarikan hipotesis, hingga akhirnya dicapai rancangan solusi yang akan digunakan untuk membangun sistem deteksi intrusi.
 
       \item Analisis Metode \\
       Pada tahap analisis metode, dilakukan eksplorasi yang bertujuan untuk mendapatkan metode-metode terbaik yang dapat digunakan sebagai komponen dalam pencocokan \emph{signature}. Analisis yang dilakukan mencakup metode \emph{streaming} dan preproses \emph{signature} paket, memori \emph{layout} untuk \emph{dictionary}, dan algoritma pencocokan \emph{signature}. Selain dilakukan eksperimen secara umum dengan mengacu pada penelitian-penelitian serupa yang pernah dilakukan sebelumnya, akan dilakukan pula eksperimen dengan beberapa modifikasi yang dianggap perlu.
 
       \item Implementasi Sistem \\
-      Pembangunan sistem deteksi intrusi dilakukan dengan memanfaatkan hasil yang didapatkan dari tahapan sebelumnya, yakni metode-metode dan algoritma pencocokan pola. 
+      Pembangunan sistem deteksi intrusi dilakukan dengan memanfaatkan hasil yang didapatkan dari tahapan sebelumnya, yakni metode-metode dan algoritma pencocokan pola.
 
       \item Evaluasi dan Penarikan Kesimpulan \\
       Pada tahap ini dilakukan evaluasi terhadap sistem deteksi intrusi yang telah dibangun. Selain itu, dilakukan juga penarikan kesimpulan yang didasari oleh hasil evaluasi pengujian sistem deteksi intrusi.
@@ -66,7 +66,7 @@
 
 \section{Jadwal Pelaksanaan Tugas Akhir}
 
-  Tuliskan rencana kegiatan dan jadwal (dirinci sampai per minggu) mulai dari awal pelaksanaan Tugas Akhir I s.d. sidang tugas akhir berikut \emph{milestones} dan \emph{deliverables} yang harus diberikan. Jadwal ini dapat dibantu dengan membuat sebuah tabel \emph{timeline} seperti berikut. \\
+  Berikut adalah rencana kegiatan dan jadwal (dirinci sampai per minggu) mulai dari awal pelaksanaan Tugas Akhir I s.d. sidang Tugas Akhir beserta \emph{milestones} dan \emph{deliverables}. \\
   \input{gantt/chart.tex}
 
   Adapun penjelasan lebih rinci untuk jadwal pelaksanaan Tugas Akhir I hingga sidang Tugas Akhir dapat dilihat pada tabel berikut. \\

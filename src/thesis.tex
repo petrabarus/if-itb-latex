@@ -10,10 +10,7 @@
 %
 %--------------------------------------------------------------------%
 
-\documentclass[12pt, a4paper, onecolumn, oneside, final]{report}
-
-\usepackage{graphicx}
-\DeclareGraphicsExtensions{.png,.jpg,.jpeg}
+\documentclass[11pt, a4paper, onecolumn, oneside, final]{book}
 
 \input{config/if-itb-thesis.sty}
 \input{config/hyphenation.tex}
@@ -27,19 +24,20 @@
 \begin{document}
 
     %Basic configuration
-    \title{Eksploitasi Paralelitas pada SNORT Intrusion Detection System}
+    \title{Pengembangan Pencocokan Paket Berbasis GPU pada SNORT NIDS}
     \date{}
     \author{
         Afrizal Fikri \\
-        13513004
+        NIM 13513004
     }
 
-    \pagenumbering{roman}
-    \setcounter{page}{0}
+    % \pagenumbering{roman}
+    % \setcounter{page}{0}
 
+    \frontmatter
     \input{chapters/cover}
     \input{chapters/approval}
-    \input{chapters/statement}
+    % \input{chapters/statement}
 
     \pagestyle{plain}
 
@@ -48,26 +46,44 @@
     % \input{chapters/forewords}
 
     \titleformat*{\section}{\centering\bfseries\Large\MakeUpperCase}
-
+    
     \tableofcontents
+    \addcontentsline{toc}{chapter}{DAFTAR ISI} 
+    {%
+        \let\oldnumberline\numberline%
+        \renewcommand{\numberline}{\figurename~\oldnumberline}%
+        \listoffigures%
+    }
+    \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}  
+    {%
+        \let\oldnumberline\numberline%
+        \renewcommand{\numberline}{\tablename~\oldnumberline}%
+        \listoftables%
+    }
+    \addcontentsline{toc}{chapter}{DAFTAR TABEL}
 
-    \addcontentsline{toc}{chapter}{\listfigurename}
-    \listoffigures
+    % \titleformat*{\section}{\centering\bfseries\large\MakeUpperCase}
 
-    \addcontentsline{toc}{chapter}{\listtablename}
-    \listoftables
+    % \tableofcontents
 
-    \titleformat*{\section}{\bfseries\Large}
-    \pagenumbering{arabic}
+    % \addcontentsline{toc}{chapter}{\listfigurename}
+    % \listoffigures
+
+    % \addcontentsline{toc}{chapter}{\listtablename}
+    % \listoftables
+
+    % \titleformat*{\section}{\bfseries\Large}
+    % \pagenumbering{arabic}
 
     %----------------------------------------------------------------%
     % Konfigurasi Bab
     %----------------------------------------------------------------%
-    \setcounter{page}{0}
     \renewcommand{\chaptername}{BAB}
     \renewcommand{\thechapter}{\Roman{chapter}}
     %----------------------------------------------------------------%
 
+    \titleformat*{\section}{\bfseries\large}
+    \mainmatter
     %----------------------------------------------------------------%
     % Dafter Bab
     % Untuk menambahkan daftar bab, buat berkas bab misalnya `chapter-6` di direktori `chapters`, dan masukkan ke sini.
@@ -75,20 +91,29 @@
     \input{chapters/chapter-1}
     \input{chapters/chapter-2}
     \input{chapters/chapter-3}
-    \input{chapters/chapter-4}
-    \input{chapters/chapter-5}
+    % \input{chapters/chapter-4}
+    % \input{chapters/chapter-5}
     %----------------------------------------------------------------%
 
     % Daftar pustaka
+    \renewcommand{\bibname}{Daftar Pustaka}
+    \cleardoublepage
+    \phantomsection
+    \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
     \printbibliography[title=Daftar Pustaka]
+    % \bibliography{references}
+    % \bibliographystyle{apa}
 
     % Index
     \appendix
 
-    \addcontentsline{toc}{part}{Lampiran}
-    \part*{Lampiran}
+    \cleardoublepage
+    \phantomsection
 
-    \input{chapters/appendix-1}
-    \input{chapters/appendix-2}
+    % \addcontentsline{toc}{part}{Lampiran}
+    % \part*{Lampiran}
+
+    % \input{chapters/appendix-1}
+    % \input{chapters/appendix-2}
 
 \end{document}

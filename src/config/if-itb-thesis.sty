@@ -14,26 +14,35 @@
 \special{papersize=210mm,297mm}
 
 % Setting margin
-\usepackage[top=3cm,bottom=2.5cm,left=4cm,right=2.5cm]{geometry}
+\usepackage[top=3cm,bottom=3cm,left=4cm,right=3cm]{geometry}
 
 \usepackage{mathptmx}
 
-% Judul bahasa Indonesia
 \usepackage[bahasa]{babel}
+\usepackage{csquotes}
 
 % Format citation
-\usepackage[backend=bibtex,citestyle=authoryear]{biblatex}
+\usepackage[backend=biber,style=apa,citestyle=authoryear]{biblatex}
+\DeclareLanguageMapping{bahasa}{american-apa}
+\DeclareFieldFormat{apacase}{#1}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{titling}
+\usepackage{multirow}
+\usepackage{pgfgantt}
+\usepackage{float}
+\usepackage{ragged2e}
 \usepackage{blindtext}
 \usepackage{sectsty}
 \usepackage{chngcntr}
 \usepackage{etoolbox}
+\usepackage{amsmath}
 \usepackage{hyperref}       % Package untuk link di daftar isi.
 \usepackage{titlesec}       % Package Format judul
 \usepackage{parskip}
+
+% \captionsetup[longtable]{skip=0.1em}
 
 % Line satu setengah spasi
 \renewcommand{\baselinestretch}{1.5}
@@ -44,14 +53,34 @@
   {\Large\centering\bfseries}
   {\chaptertitlename\ \thechapter}{0pt}
     {\Large\bfseries\uppercase}
+  \titlespacing*{\chapter}{0pt}{-50pt}{40pt}
 
 % Setting nomor pada subbsubsubbab
-\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\titlespacing*{\section} {0pt}{2.5ex plus 1ex minus .2ex}{1.3ex plus .2ex}
+\titlespacing*{\subsection} {0pt}{2.25ex plus 1ex minus .2ex}{0.5ex plus .2ex}
 
 \makeatletter
 
 \makeatother
 
+% Gambar
+\DeclareGraphicsExtensions{.png,.jpg,.jpeg}
+
 % Counter untuk figure dan table.
 \counterwithin{figure}{section}
 \counterwithin{table}{section}
+
+% Nomor persamaan
+\renewcommand{\theequation}{\arabic{equation}}
+
+% Daftar Gambar / Tabel
+\renewcommand\thefigure{\thechapter.\arabic{figure}}
+\renewcommand\thetable{\thechapter.\arabic{table}}

@@ -1,10 +1,41 @@
-\chapter{Analisis dan Perancangan}
+\chapter{Analisis Permasalahan dan Solusi}
 
-\section{Analisis Masalah}
-\blindtext
+  % Pada bab ini akan dipaparkan analisis permasalahan yang ada dalam permasalahan pembangunan membangun sistem pencegahan intrusi berbasis GPU. Selain itu, akan dipaparkan juga solusi yang diajukan dalam bentuk langkah-langkah pekerjaan yang akan dilakukan.
 
-\section{Solusi Umum}
-\blindtext
+  \section{Analisis Permasalahan}
+  
+    Sistem pencegah intrusi jaringan (NIPS) adalah sistem yang bertugas melakukan penyaringan paket yang dianggap berbahaya. NIPS bekerja dengan cara menangkap paket yang berjalan dalam jaringan untuk kemudian dianalisis. Hasil analisis kemudian ditindaklanjuti berdasarkan \emph{rule} yang telah didefinisikan. Paket dapat ditolak atau dibatasi. Dalam beberapa kasus, bahkan aliran paket dapat diblok.
 
-\section{Rancangan Solusi}
-\blindtext
+    Dampak dari pengecekan paket adalah adanya \emph{overhead} waktu respons. Lama \emph{overhead} tergantung dari waktu pencocokan pola. Pada NIPS, hal ini dapat membuat hasil analisis menjadi tidak akurat. Maka diperlukan metode untuk melakukan analisis dengan cepat. Sebagai perbandingan, \emph{bandwidth} jaringan US Naval Postgraduate School sudah mencapai 20 Gbps dengan traffic rata-rata sebesar 200 Mbps per hari. Sedangkan maksimum paket yang dapat dianalisis oleh Snort tidak lebih besar dari 200 Mbps.
+
+    Berbagai penelitian telah dilakukan untuk mempercepat NIDS dan NIPS. Desain paling awal yaitu menggunakan desain konkuren dengan \emph{multithreading} pada CPU \parencite{multi2004}. Desain ini mampu meningkatkan penggunaan utilitas \emph{thread} CPU secara drastis. Kemudian desain berbeda yang menggunakan GPU mulai diajukan oleh \textcite{gnort2008}. Hasil yang didapat mampu mempercepat sistem hingga 5x dibandingkan CPU dengan harga yang sepadan \parencite{smith2009}.
+
+    % Pencocokan dapat dilakukan secara stateful, ataupun tidak. Pencocokan yang berbasis stateful akan lebih susah untuk dicek secara paralel.
+
+    % Meski demikian, masih ada beberapa masalah terjadi dalam desain yang telah diajukan. Pencocokan paket masih menggunakan algoritma yang berbasis insi
+
+    Berdasarkan pengukuran yang dilakukan oleh \textcite{kargus2012}, didapatkan bahwa sebagian besar beban analisa paket berada pada tahap pencarian string pada \emph{payload} paket. Pada tahapan ini, sebagian besar paket yang tidak terindikasi sebagai serangan akan diloloskan. Sehingga beban pencocokan pada tahap berikutnya, yaitu pencocokan \emph{option rule} akan berkurang drastis. Maka, fokus dari solusi yang akan diajukan yaitu implementasi desain yang akan mempercepat kinerja pencocokan string paket pada NIPS Snort. Desain yang dapat digunakan untuk memanfaatkan paralelitas dapat ditinjau dari berbagai sisi, seperti GPU \emph{multithreading}, \emph{asynchronous memory transfer}, dan struktur penyimpanan.
+
+  \section{Analisis Solusi}
+  
+    % Berdasarkan permasalahan-permasalahan yang muncul dalam rangka membangun sistem pencegahan intrusi berbasis GPU, terdapat rancangan solusi yang diajukan untuk menyelesaikan permasalahan tersebut dalam bentuk langkah-langkah penelitian yang akan dilakukan. Langkah-langkah tersebut di antaranya adalah sebagai berikut.
+
+    Eksperimen penggunaan GPGPU pada NIPS akan memodifikasi NIDPS Snort. Snort digunakan karena kode bersifat \emph{open-source} dan mudah untuk dikembangkan, sehingga pengembangan dan eksperimen tidak memerlukan biaya banyak dan dapat dieksplorasi secara mandiri. 
+
+    Sedangkan pengembangan akan menggunakan platform GPGPU CUDA. Platform CUDA merupakan platform GPGPU yang dibuat pada GPU NVIDIA. Platform CUDA digunakan karena memiliki kinerja yang rata-rata lebih baik daripada OpenCL. Selain itu, dokumentasi dan contoh CUDA lebih banyak dan lebih mudah dipahami dibanding OpenCL.
+
+    \subsection{Implementasi Algoritma Pencocokan \emph{Signature} pada CUDA}
+
+      Algoritma yang akan digunakan adalah \emph{Parallel Failureless Aho-Corasick} (PFAC). Perbedaan algoritma ini dibandingkan algoritma Aho-Corasick yang biasa adalah algoritma ini tidak menggunakan \emph{failure function}. Sehingga tidak ada ketergantungan antar \emph{signature} dalam kamus. Hal ini dapat mengurangi jumlah sinkronisasi yang dilakukan tiap \emph{thread} sehingga kinerja yang didapatkan akan lebih baik. 
+
+    \subsection{Transfer \emph{Payload} Paket}
+
+      Pengiriman dari host ke device dan sebaliknya memiliki \emph{latency} yang cukup besar. Dalam pengujian pada \textcite{gnort2008}, didapatkan bahwa \emph{latency} dari transfer payload memiliki runtime lebih dari 80\% runtime total. Sehingga untuk menyembunyikan \emph{latency}, pengiriman akan dilakukan per batch. Ukuran batch yang digunakan akan diuji dalam ukuran 32MB, 64MB, 128MB, dan 256MB.
+
+    \subsection{Struktur Penyimpanan \emph{Signature}}
+
+      Penyimpanan \emph{signature} mempengaruhi besar memori yang digunakan. Struktur yang digunakan akan menggunakan trie terkompresi. Struktur digunakan untuk memaksimalkan \emph{locality} sehingga mengurangi \emph{latency}. Selain itu, dengan menurunkan konsumsi memori, besar buffer yang dapat digunakan meningkat. Diharapkan, \emph{latency} dari pengiriman juga menurun.
+
+    \subsection{Pengujian dan Pengambilan Hasil}
+
+      Ada dua jenis pengujian yang akan dilakukan, yaitu uji pencocokan dan \emph{stress-test}. Uji pencocokan akan dilakukan untuk menguji akurasi klasifikasi paket. Sedangkan \emph{stress-test} akan menguji ketahanan sistem dalam lingkungan yang \emph{real-time}.

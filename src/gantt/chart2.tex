@@ -1,0 +1,39 @@
+\begin{ganttchart}[
+  y unit title=0.6cm,
+  y unit chart=1.5cm,
+  x unit=1.2mm,
+  vgrid={*{6}{draw=none},dotted},
+  hgrid,
+  title label anchor/.style={below=-1.6ex},
+  title left shift=.05,
+  title right shift=-.05,
+  title height=1,
+  bar label node/.style={text width=2cm, align=right, font=\scriptsize\RaggedLeft, anchor=east},
+  incomplete/.style={fill=white},
+  progress label text={},
+  bar height=.4,
+  group right shift=0,
+  group top shift=0,
+  group height=.3,
+  group peaks height=.2,
+  time slot format=isodate,
+  time slot format/start date=2017-02-1
+]{2017-06-01}{2017-08-31}
+
+\ganttset{calendar week text=\currentweek}
+
+%labels
+\gantttitlecalendar{year, month=shortname, week=14} \\
+
+%tasks
+\ganttbar{Analisis Permasalahan}{2017-03-05}{2017-03-06} \\
+\ganttbar{Analisis Metode}{2017-06-01}{2017-08-27} \\
+\ganttbar{Implementasi Sistem}{2017-08-07}{2017-08-31} \\
+\ganttbar{Evaluasi dan Penarikan Kesimpulan}{2017-10-14}{2018-01-10}
+
+%relations
+% \ganttlink{elem0}{elem1} %
+% \ganttlink{elem1}{elem2} %
+% \ganttlink{elem2}{elem3} %
+
+\end{ganttchart}

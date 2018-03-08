@@ -1,11 +1,17 @@
-all: clean install
+all: clean compile
 
-install:
+watch:
+	find src | entr 'make'
+
+# upload:
+# 	pass
+
+compile:
 	mkdir -p output
 	mkdir -p build
-	latexmk -pdf -bibtex -outdir=../build -cd src/thesis.tex
+	biber thesis --output-directory=src
+	latexmk -pdf -shell-escape -bibtex- -outdir=build -cd src/thesis.tex
 	mv build/thesis.pdf output
 
 clean:
 	rm -f output/* build/*
-	find . -iname "*~" -exec rm '{}' ';'

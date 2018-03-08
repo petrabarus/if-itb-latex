@@ -19,9 +19,15 @@ Perujukan literatur dapat dilakukan dengan menambahkan entri baru di berkas. Tul
 
     \blindtext
 
+    % Contoh penambahan gambar di dalam teks.
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.8\textwidth]{resources/chapter-2-infrastructure-diagram.png}
+        \includegraphics
+            % Ukuran dari gambar. Lebar 0.8 dikali lebar teks.
+            [width=0.8\textwidth]
+            % Lokasi berkas gambar.
+            {resources/chapter-2-infrastructure-diagram.png}
+        % Label dari gambar.
         \caption{Contoh gambar}
     \end{figure}
 

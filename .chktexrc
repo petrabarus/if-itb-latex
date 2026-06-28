@@ -1,0 +1,14 @@
+# chktex configuration for if-itb-latex template
+# Suppress stylistic warnings common in thesis templates.
+
+CmdLine
+{
+    -q
+    -n 1
+    -n 8
+    -n 11
+    -n 18
+    -n 24
+    -n 26
+    -n 36
+}

@@ -1,9 +1,9 @@
 REM clean
 rmdir /S /Q build
-rmdir /S /Q output
+rmdir /S /Q dist
 	
-REM install
-mkdir -p output
+REM build
+mkdir -p dist
 mkdir -p build
 latexmk -pdf -bibtex -outdir=../build -cd src/thesis.tex
-move build\thesis.pdf output
+move build\thesis.pdf dist

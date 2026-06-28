@@ -1,0 +1,5 @@
+ID,Kebutuhan,Prioritas,Status
+FR-01,Autentikasi pengguna,Tinggi,Diterima
+FR-02,Manajemen data,Tinggi,Diterima
+FR-03,Ekspor laporan,Sedang,Ditinjau
+FR-04,Notifikasi email,Rendah,Ditunda

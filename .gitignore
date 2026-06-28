@@ -16,5 +16,5 @@
 texmf
 thesis.pdf
 .directory
-output/*
+dist/*
 build/*

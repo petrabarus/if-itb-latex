@@ -1,0 +1,54 @@
+name: Build
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    name: Validate LaTeX
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install chktex
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends chktex
+
+      - name: Lint LaTeX sources
+        run: make validate
+
+      - name: Verify resource files
+        run: |
+          test -f src/resources/chapter-3-sample-requirements.csv
+          test -f src/resources/chapter-3-sample-components.csv
+          test -f src/resources/cover-ganesha.jpg
+          test -f src/resources/chapter-2-infrastructure-diagram.png
+
+  build:
+    name: Build PDF
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended \
+            texlive-bibtex-extra biber xzdec texlive-lang-other latexmk
+
+      - name: Build thesis
+        run: make build
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: thesis-pdf
+          path: dist/thesis.pdf
+          if-no-files-found: error

@@ -1,0 +1,5 @@
+Komponen,Deskripsi,Teknologi
+Frontend,Antarmuka pengguna,React
+Backend,Layanan API,Node.js
+Database,Penyimpanan data,PostgreSQL
+Cache,Penyimpanan sementara,Redis

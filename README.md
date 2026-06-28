@@ -15,9 +15,9 @@ Cara termudah untuk menggunakan templat ini:
 1. **Fork** repositori ini di GitHub ke akun Anda.
 2. **Clone** fork Anda ke komputer lokal.
 3. **Tulis** tesis Anda — mulai dari `src/thesis.tex` (judul dan penulis), lalu isi berkas di `src/chapters/`.
-4. **Bangun** PDF dengan `make` (lihat [Penggunaan](#penggunaan)).
+4. **Bangun** PDF dengan `make` (lihat [Penggunaan](#penggunaan)), atau **push** ke branch `main`/`master` di fork Anda untuk membangun PDF otomatis di GitHub Actions (lihat [CI / Build Otomatis](#ci--build-otomatis)).
 
-Anda tidak perlu mengunduh arsip ZIP atau membuat proyek LaTeX dari nol. Cukup fork, clone, tulis, dan kompilasi.
+Anda tidak perlu mengunduh arsip ZIP atau membuat proyek LaTeX dari nol. Cukup fork, clone, tulis, dan kompilasi — lokal atau lewat GitHub Actions.
 
 ## Kebutuhan
 
@@ -108,7 +108,11 @@ Tabel dengan `\caption` otomatis masuk ke **Daftar Tabel**. Simpan berkas CSV di
 
 ## CI / Build Otomatis
 
-GitHub Actions menjalankan job **Validate LaTeX** (`make validate` dengan chktex dan pemeriksaan berkas resource) pada pull request ke `main`/`master`. Job **Build PDF** hanya dijalankan pada push ke `main`/`master`; PDF hasil build diunggah sebagai artifact `thesis-pdf` di tab Actions repositori.
+GitHub Actions menjalankan job **Validate LaTeX** (`make validate` dengan chktex dan pemeriksaan berkas resource) pada pull request ke `main`/`master`. Job **Build PDF** hanya dijalankan pada push ke `main`/`master`.
+
+Jika Anda tidak ingin membangun PDF secara lokal, cukup **push** perubahan ke branch `main` atau `master` di fork repositori Anda. GitHub Actions akan mengompilasi tesis dan mengunggah hasilnya sebagai artifact **`thesis-pdf`**. Unduh PDF terbaru dari tab **Actions** → pilih workflow run → bagian **Artifacts**:
+
+![Unduh thesis-pdf dari GitHub Actions Artifacts](docs/artifacts.png)
 
 ## Changelog
 
